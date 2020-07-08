@@ -1,5 +1,5 @@
 class Group < ApplicationRecord
-    validates :name, presence: true, length: { in: 1..50 }, uniqueness: true
+    validates :name, presence: true, length: { in: 1..50 }
 
     has_many :transactions
     belongs_to :user

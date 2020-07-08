@@ -5,7 +5,7 @@ class TransactionsController < ApplicationController
   # GET /transactions
   # GET /transactions.json
   def index
-    @transactions = Transaction.all
+    @transactions = Transaction.includes(:user, :group).where(user_id: current_user.id).dsc
   end
 
   # GET /transactions/1
@@ -16,6 +16,7 @@ class TransactionsController < ApplicationController
   # GET /transactions/new
   def new
     @transaction = Transaction.new
+    @groups = Group.all.collect {|group| [group.name, group.id] }
   end
 
   # GET /transactions/1/edit
@@ -25,7 +26,7 @@ class TransactionsController < ApplicationController
   # POST /transactions
   # POST /transactions.json
   def create
-    @transaction = Transaction.new(transaction_params)
+    @transaction = current_user.transactions.build(transaction_params)
 
     respond_to do |format|
       if @transaction.save

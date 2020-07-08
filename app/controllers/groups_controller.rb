@@ -11,6 +11,7 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    @transactions = Transactions.includes(:group, :user).where(group_id: @group.id).order("created_at DESC")
   end
 
   # GET /groups/new
@@ -25,7 +26,7 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
-    @group = Group.new(group_params)
+    @group = current_user.groups.build(group_params)
 
     respond_to do |format|
       if @group.save
@@ -70,6 +71,6 @@ class GroupsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def group_params
-      params.require(:group).permit(:name, :icon)
+      params.require(:group).permit(:name, :icon, :user)
     end
 end
