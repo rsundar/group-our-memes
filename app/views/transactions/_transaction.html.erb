@@ -1,0 +1,9 @@
+<h5><%= transaction.name %></h5>
+<h5><%= transaction.about %></h5>
+<h5><%= transaction.rating %></h5>
+<h5><%= transaction.created_at.strftime('%d %b %Y') %></h5>
+<p>
+    <% if controller_name == "groups" && action_name == "show"%>
+        <h5><%= transaction.user.username %></h5>
+    <% end %>
+</p>

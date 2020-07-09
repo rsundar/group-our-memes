@@ -11,7 +11,7 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
-    @transactions = Transactions.includes(:group, :user).where(group_id: @group.id).order("created_at DESC")
+    @transactions = Transaction.includes(:group, :user).where(group_id: @group.id).desc
   end
 
   # GET /groups/new

@@ -5,7 +5,7 @@ class TransactionsController < ApplicationController
   # GET /transactions
   # GET /transactions.json
   def index
-    @transactions = Transaction.includes(:user, :group).where(user_id: current_user.id).dsc
+    @transactions = Transaction.includes(:user, :group).where(user_id: current_user.id).desc
   end
 
   # GET /transactions/1
@@ -26,7 +26,7 @@ class TransactionsController < ApplicationController
   # Categorizing transactions without a group.
   # GET /transactions/groupless
   def groupless
-    @transaction = Transactions.includes(:user, :group).where({group_id: nil, user_id: current_user.id}).dsc
+    @transaction = Transaction.includes(:group, :user).where({group_id: nil, user_id: current_user.id}).desc
   end
 
   # POST /transactions
