@@ -3,13 +3,19 @@
 
 <% if user_signed_in? %>
     <div>
+        <%= link_to "All My Groups", groups_path %>
+    </div>
+    <div>
+        <%= link_to "All My Transactions", transactions_path %>
+    </div>
+    <div>
+        <%= link_to "All my external transactions", groupless_path %>
+    </div>
+    <div>
         <%= link_to "Create New Group", new_group_path %>
     </div>
     <div>
         <%= link_to "Create New Transaction", new_transaction_path %>
-    </div>
-    <div>
-        <%= link_to "All my external transactions", groupless_path %>
     </div>
     <div>
         <%= link_to "Logout", destroy_user_session_path, method: :delete %>
