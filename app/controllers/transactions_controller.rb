@@ -23,6 +23,12 @@ class TransactionsController < ApplicationController
   def edit
   end
 
+  # Categorizing transactions without a group.
+  # GET /transactions/groupless
+  def groupless
+    @transaction = Transactions.includes(:user, :group).where({group_id: nil, user_id: current_user.id}).dsc
+  end
+
   # POST /transactions
   # POST /transactions.json
   def create
