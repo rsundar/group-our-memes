@@ -26,6 +26,8 @@ gem 'jbuilder', '~> 2.7'
 # gem 'image_processing', '~> 1.2'
 gem 'devise'
 gem 'simple_form'
+gem 'gravatar_image_tag'
+gem 'mini_magick', '~> 4.9'
 
 # Shrine for file uploads, and the cloudinary gem for cloudinary cloud storage.
 gem 'cloudinary'
