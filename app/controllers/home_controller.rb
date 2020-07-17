@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
-  def index
-    render :index
+  layout "index"
+  def index 
   end
 
 end

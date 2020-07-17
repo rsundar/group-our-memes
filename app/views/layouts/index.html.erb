@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GroupOurMemes | Home</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="bg-blue-600">
+        <% if user_signed_in? %>
+            <div class="container mx-auto flex flex-col items-center">
+                <div class="mt-20 mb-12">
+                    <%= image_tag user_avatar(current_user, 250), class: "rounded-full" %>
+                </div>
+                <div class="text-center mt-4">
+                    <p class="text-6xl text-white font-black"><%= current_user.username %></p>
+                </div>
+                <div class="text-center pt-12 mt-12">
+                    <%= link_to "All My Groups", groups_path, class: "text-4xl text-white font-bold visited:text-white" %>
+                </div>
+                <div class="text-center mt-12">
+                    <%= link_to "All My Transactions", transactions_path, class: "text-4xl text-white font-bold visited:text-white" %>
+                </div>
+                <div class="text-center mt-12">
+                    <%= link_to "All my external transactions", groupless_path, class: "text-4xl text-white font-bold visited:text-white" %>
+                </div>
+                <div class="text-center mt-12">
+                    <%= link_to "Create New Group", new_group_path, class: "text-4xl text-white font-bold visited:text-white" %>
+                </div>
+                <div class="text-center mt-12">
+                    <%= link_to "Create New Transaction", new_transaction_path, class: "text-4xl text-white font-bold visited:text-white" %>
+                </div>
+                <div class="text-center mt-12">
+                    <%= link_to "Edit User", edit_user_registration_path, class: "text-4xl text-white font-bold visited:text-white" %>
+                </div>
+                <div class="text-center mt-12">
+                    <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "text-4xl text-white font-bold visited:text-white" %>
+                </div>
+            </div>
+        <% else %>
+            <% controller.redirect_to :new_user_session %>
+        <% end %>   
+  </body>   
+</html>     
