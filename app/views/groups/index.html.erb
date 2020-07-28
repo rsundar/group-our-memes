@@ -16,7 +16,7 @@
     <% @groups.each do |group| %>
       <tr>
         <td><%= group.name %></td>
-        <td><%= group.icon %></td>
+        <td><%= image_tag groups_icon(group, size=25), size: "25x25", class: "rounded" %></td>
         <td><%= number_with_precision(group.average_ratings, precision: 2) %></td>
         <td><%= link_to 'Show', group %></td>
         <td><%= link_to 'Edit', edit_group_path(group) %></td>

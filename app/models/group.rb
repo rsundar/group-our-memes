@@ -1,6 +1,8 @@
 class Group < ApplicationRecord
     validates :name, presence: true, length: { in: 1..50 }
-
+    validates :icon, presence: true
+    
+    has_one_attached :icon
     has_many :transactions
     belongs_to :user
 
