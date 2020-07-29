@@ -1,14 +1,15 @@
-
-<%= simple_form_for(@group) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :icon, as: :file %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+<div class="container bg-grey mx-auto">
+  <%= simple_form_for(@group) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <div class="p-4 bg-white rounded-lg flex flex-col items-center">
+      <div class="mt-2 mb-2">
+        <%= f.input :name , class: "text-grey-700 text-sm font-bold block"%>
+        <%= f.input :icon, as: :file, class: "text-grey-700 text-sm font-bold block" %>
+      </div>
+      <div class="mb-2">
+        <%= f.button :submit, class:"px-3 py-3 text-white bg-green-400" %>
+      </div>
+    </div>
+  <% end %>
+</div>
