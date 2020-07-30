@@ -1,16 +1,16 @@
-
 <%= simple_form_for(@transaction) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :about %>
-    <%= f.input :rating %>
-    <%= f.association :group %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="p-4 bg-white rounded-lg flex flex-col items-center">
+    <div class="mt-2 mb-2">
+      <%= f.input :name, input_html: { class: "block bg-blue-100 border-grey-600 rounded-lg" }, label_html: { class: "text-grey-700 text-sm font-bold mr-2" }%>
+      <%= f.input :about, input_html: { class: "block bg-blue-100 border-grey-600 rounded-lg" }, label_html: { class: "text-grey-700 text-sm font-bold mr-2"}%>
+      <%= f.input :rating, input_html: { class: "block bg-blue-100 border-grey-600 rounded-lg" }, label_html: { class: "text-grey-700 text-sm font-bold mr-2"} %>
+      <%= f.association :group, input_html: { class: "block appearance-none bg-blue-100 border border-gray-400 hover:border-gray-500 px-4 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline" }, label_html: { class: "text-grey-700 text-sm font-bold mr-2" } %>
+    </div>
+    <div class="m-2">
+      <%= f.button :submit, class: "px-3 py-3 text-white bg-green-400" %>
+    </div>
   </div>
 <% end %>
