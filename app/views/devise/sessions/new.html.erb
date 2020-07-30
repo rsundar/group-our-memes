@@ -5,6 +5,7 @@
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="mb-4">
           <%= f.input :login,
+                      label: "Username or Email",
                       required: false,
                       autofocus: true,
                       input_html: { autocomplete: "Username or Email", class: "block appearance-none w-full bg-blue-100 
