@@ -15,10 +15,9 @@ RSpec.describe Transaction, type: :model do
   context "scope validations" do
     let(:user) { FactoryBot.create(:user) }
     let(:today) { Time.now }
-    let(:old_transaction) { FactoryBot.create(:transactions, user_id: user.id, created_at: today - 2.days) }
-    let(:new_transaction) { FactoryBot.create(:transactions, user_id: user.id, created_at: today) }
-    subject { Transaction.desc.to_a[-2...-1] }
-    
+    let(:old_transaction) { FactoryBot.create(:transactions, user_id: user.id, created_at: today - 2.days).save }
+    let(:new_transaction) { FactoryBot.create(:transactions, user_id: user.id, created_at: today).save }
+    subject { Transaction.desc.to_a }
     describe ":desc" do
       it { is_expected.to match_array [new_transaction, old_transaction] }
     end
