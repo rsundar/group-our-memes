@@ -12,14 +12,15 @@ RSpec.describe Transaction, type: :model do
     it { should belong_to(:group).optional }
   end
 
-  context "Scope Validations" do
-    let(:transactions) { FactoryBot.create_list(:transactions, 3) }
+  context "scope validations" do
+    let(:user) { FactoryBot.create(:user) }
+    let(:today) { Time.now }
+    let(:old_transaction) { FactoryBot.create(:transactions, user_id: user.id, created_at: today - 2.days) }
+    let(:new_transaction) { FactoryBot.create(:transactions, user_id: user.id, created_at: today) }
+    subject { Transaction.desc.to_a[-2...-1] }
+    
     describe ":desc" do
-      it "The Transactions should be ordered by most recent" do
-        expect(transactions.desc.to_a).to eq transactions.sort_by(&:created_at)
-      end
+      it { is_expected.to match_array [new_transaction, old_transaction] }
     end
   end
-    
-
 end
