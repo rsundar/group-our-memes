@@ -13,13 +13,15 @@ RSpec.describe Transaction, type: :model do
   end
 
   context "scope validations" do
-    let(:user) { FactoryBot.create(:user) }
-    let(:today) { Time.now }
-    let(:old_transaction) { FactoryBot.create(:transactions, user_id: user.id, created_at: today - 2.days).save }
-    let(:new_transaction) { FactoryBot.create(:transactions, user_id: user.id, created_at: today).save }
-    subject { Transaction.desc.to_a }
+    let!(:user) { FactoryBot.create(:user) }
+    let!(:today) { Time.now }
+    let!(:old_transaction) { FactoryBot.create(:transactions, user_id: user.id, created_at: today - 2.days) }
+    let!(:new_transaction) { FactoryBot.create(:transactions, user_id: user.id, created_at: today) }
     describe ":desc" do
-      it { is_expected.to match_array [new_transaction, old_transaction] }
+      it "The transactions should be ordered by the most recent first" do
+        expect(Transaction.desc.first).to eq new_transaction
+        expect(Transaction.desc.last).to eq old_transaction
+      end
     end
   end
 end
