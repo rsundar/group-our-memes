@@ -1,4 +1,4 @@
-require 'capybara/rspec' # rubocop:todo Layout/EndOfLine
+require 'capybara/rspec'
 
 # DataBase cleaner configuration
 
