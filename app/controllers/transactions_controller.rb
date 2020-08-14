@@ -1,6 +1,6 @@
 class TransactionsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :show, :index]
-  before_action :set_transaction, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: %i[new create show index]
+  before_action :set_transaction, only: %i[show edit update destroy]
 
   # GET /transactions
   # GET /transactions.json
@@ -10,23 +10,21 @@ class TransactionsController < ApplicationController
 
   # GET /transactions/1
   # GET /transactions/1.json
-  def show
-  end
+  def show; end
 
   # GET /transactions/new
   def new
     @transaction = Transaction.new
-    @groups = Group.all.collect {|group| [group.name, group.id] }
+    @groups = Group.all.collect { |group| [group.name, group.id] }
   end
 
   # GET /transactions/1/edit
-  def edit
-  end
+  def edit; end
 
   # Categorizing transactions without a group.
   # GET /transactions/groupless
   def groupless
-    @transaction = Transaction.includes(:group, :user).where({group_id: nil, user_id: current_user.id}).desc
+    @transaction = Transaction.includes(:group, :user).where({ group_id: nil, user_id: current_user.id }).desc
   end
 
   # POST /transactions
@@ -70,13 +68,14 @@ class TransactionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_transaction
-      @transaction = Transaction.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def transaction_params
-      params.require(:transaction).permit(:name, :about, :rating, :group_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_transaction
+    @transaction = Transaction.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def transaction_params
+    params.require(:transaction).permit(:name, :about, :rating, :group_id)
+  end
 end

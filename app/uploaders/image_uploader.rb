@@ -1,2 +1,2 @@
-class ImageUploader < Shrine
+class ImageUploader < Shrine # rubocop:todo Layout/EndOfLine
 end
