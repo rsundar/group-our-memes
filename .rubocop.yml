@@ -6,6 +6,7 @@ AllCops:
     - "Guardfile"
     - "Rakefile"
     - "node_modules/**/*"
+    - "Gemfile"
 
   DisplayCopNames: true
 
@@ -46,6 +47,7 @@ Style/FrozenStringLiteralComment:
   EnforcedStyle: never
 
 Layout/HashAlignment:
+  Enabled: false
   EnforcedColonStyle: key
 Layout/ExtraSpacing:
   AllowForAlignment: false
