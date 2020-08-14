@@ -1,4 +1,4 @@
-FactoryBot.define do # rubocop:todo Layout/EndOfLine
+FactoryBot.define do
   factory :user, class: 'User' do
     username { Faker::Internet.username }
     email { Faker::Internet.email }

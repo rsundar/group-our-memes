@@ -1,4 +1,4 @@
-require 'rails_helper' # rubocop:todo Layout/EndOfLine
+require 'rails_helper'
 
 feature 'user visits All My Transactions page' do
   scenario 'user can see all of their created transactions' do
