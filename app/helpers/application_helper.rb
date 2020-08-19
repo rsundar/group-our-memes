@@ -14,4 +14,20 @@ module ApplicationHelper
           ActionController::Base.helpers.asset_path('cartoon-user-2.jpg') # rubocop:todo Layout/IndentationWidth
       end
   end
+
+  def notification?(notification)
+    return if notification.nil?
+
+    if notification == notice
+      render 'shared/notice'
+    else
+      render 'shared/alert'
+    end
+  end
+
+  def nav_links(user_authenticated)
+    if user_authenticated
+      render 'shared/signed_in_user_links'
+    end
+  end
 end
