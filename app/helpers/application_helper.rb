@@ -26,8 +26,6 @@ module ApplicationHelper
   end
 
   def nav_links(user_authenticated)
-    if user_authenticated
-      render 'shared/signed_in_user_links'
-    end
+    render 'shared/signed_in_user_links' if user_authenticated
   end
 end
