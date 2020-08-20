@@ -1,0 +1,67 @@
+AllCops:
+  Exclude:
+    - "db/**/*"
+    - "bin/*" 
+    - "config/**/*"
+    - "Guardfile"
+    - "Rakefile"
+    - "node_modules/**/*"
+    - "Gemfile"
+
+  DisplayCopNames: true
+
+Layout/LineLength:
+  Enabled: false
+  Max: 120
+Metrics/MethodLength:
+  Enabled: false
+  Include:
+    - "app/controllers/*"
+    - "app/models/*"
+  Max: 20
+Metrics/AbcSize:
+  Enabled: false
+  Include:
+    - "app/controllers/*"
+    - "app/models/*"
+  Max: 50
+Metrics/ClassLength:
+  Enabled: false
+  Max: 150
+Metrics/BlockLength:
+  Enabled: false
+  ExcludedMethods: ['describe']
+  Max: 30
+
+Style/Documentation:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+Style/EachForSimpleLoop:
+  Enabled: false
+Style/AndOr:
+  Enabled: false
+Style/DefWithParentheses:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+  EnforcedStyle: never
+
+Layout/HashAlignment:
+  Enabled: false
+  EnforcedColonStyle: key
+Layout/ExtraSpacing:
+  AllowForAlignment: false
+Layout/MultilineMethodCallIndentation:
+  Enabled: false
+  EnforcedStyle: indented
+Lint/RaiseException:
+  Enabled: false
+Lint/StructNewOverride:
+  Enabled: false
+Style/HashEachMethods:
+  Enabled: false
+Style/HashTransformKeys:
+  Enabled: false
+Style/HashTransformValues:
+  Enabled: false
