@@ -1,0 +1,23 @@
+<div class="mt-2 flex flex-col items-center leading-normal">
+    <div class="mb-8 w-1/3">
+        <% group.each do |group| %>
+            <div class="mt-8 mb-8 border-r border-l border-b border-gray-400 rounded-lg overflow-hidden bg-white p-4">
+                <%= image_tag groups_icon(group, size=100), size:"100x100" %>
+                <div class="text-gray-900 font-bold text-4xl mb-2">
+                    <h4><%= link_to group.name, group_url(group.id), method: :get %></h4>
+                </div>
+                <div class="text-gray-900 font-bold text-4xl mb-2">
+                    <p>Average Rating: <%= number_with_precision(group.average_ratings, precision: 2) %> / 10 </p> 
+                </div>
+                <div class="text-gray-700 text-4xl mb-2">
+                    <p> Created At: <%= group.created_at.strftime('%d %b %Y') %></p>
+                </div>
+                <div class="flex justify-start">
+                    <div><%=link_to "Show", group%> | </div>
+                    <div><%=link_to "Edit", edit_group_path(group)%> | </div>
+                    <div><%=link_to "Destroy", group, method: :delete, data: { confirm: 'Are you sure?' }%></div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

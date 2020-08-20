@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GroupOurMemes | Home</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="bg-blue-600">
+    
+    <div class="container mx-auto flex flex-col items-center">
+        <div class="mt-20 mb-12">
+            <%= image_tag user_avatar(current_user, 250), class: "rounded-full" %>
+        </div>
+        <div class="text-center mt-4">
+            <p class="text-6xl text-white font-black"><%= current_user.username %></p>
+        </div>
+        <div class="text-center pt-12 mt-12">
+            <%= button_to"All My Groups", groups_path, method: :get, class: "bg-transparent px-12 py-12 pl-24 pr-24 text-4xl text-white border-b-2 border-white" %>
+        </div>
+        <div class="text-center mt-12">
+            <%= button_to "All My Transactions", transactions_path, method: :get, class: "bg-transparent px-12 py-12 pl-20 pr-20 text-4xl text-white border-b-2 border-white" %>
+        </div>
+        <div class="text-center mt-12">
+            <%= button_to "All my external transactions", groupless_path, method: :get, class: "bg-transparent px-12 py-12 text-4xl text-white border-b-2 border-white" %>
+        </div>
+        <div class="text-center mt-12">
+            <%= button_to "Create New Group", new_group_path, method: :get, class: "bg-transparent px-12 py-12 pl-16 pr-16 text-4xl text-white border-b-2 border-white" %>
+        </div>
+        <div class="text-center mt-12">
+            <%= button_to "Create New Transaction", new_transaction_path, method: :get, class: "bg-transparent px-12 py-12 pl-24 pr-24 text-4xl text-white border-b-2 border-white" %>
+        </div>
+        <div class="text-center mt-12">
+            <%= button_to "Edit User", edit_user_registration_path, method: :get, class: "bg-transparent px-12 py-12 pl-12 pr-12 text-4xl text-white border-b-2 border-white" %>
+        </div>
+        <div class="text-center mt-12">
+            <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "bg-transparent px-12 py-12 pl-28 pr-28 text-4xl text-white border-b-2 border-white" %>
+        </div>
+    </div>
+         
+  </body>   
+</html>     
